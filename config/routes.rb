@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :list
+  resources :lists
 
   root to: 'home#index'
 end
