@@ -1,2 +1,10 @@
-<h1>List#index</h1>
-<p>This will have a list of the current lists</p>
+<h1>Current Lists</h1>
+<% @lists.each do |list| %>
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= link_to list.name, list %>
+      </h4>
+    </div>
+  </div>
+<% end %>
