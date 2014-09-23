@@ -1,4 +1,4 @@
-class ListController < ApplicationController
+class ListsController < ApplicationController
   def index
     @lists = List.all
   end
@@ -26,6 +26,16 @@ class ListController < ApplicationController
   end
 
   def destroy
+    @list = List.find(params[:id])
+    name = @list.name
+
+    if @list.destroy
+      flash[:notice] = "\"#{name}\" was deleted successfully."
+      redirect_to lists_path
+    else
+      flash[:error] = "There was an error deleteing the list."
+      render :show
+    end
   end
 
   def edit
