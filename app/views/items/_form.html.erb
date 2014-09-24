@@ -1,0 +1,7 @@
+<hr>
+<%=form_for [list, item] do |f|%>
+<%=f.label "Enter Item name"%>
+<%=f.text_field :name%>
+<hr>
+<%=f.submit "Add item"%>
+<%end%>
