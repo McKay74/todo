@@ -1,14 +1,17 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
+    authorize @lists
   end
 
   def new
     @list = List.new
+    authorize @list
   end
 
   def create
-    @list = List.new(params.require(:list).permit(:name))
+    @list = List.new(list_params)
+    authorize @list 
     if @list.save
       flash[:notice] = "List was created."
       redirect_to @list
@@ -23,6 +26,8 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @item = @list.items.new
+    @items = @list.items
   end
 
   def destroy
@@ -39,5 +44,9 @@ class ListsController < ApplicationController
   end
 
   def edit
+  end
+
+  def list_params
+    params.require(:list).permit(:name)
   end
 end
