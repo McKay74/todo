@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+  before_filter :authenticate_user! , only: [:show]
+
   def index
     @lists = List.all
     authorize @lists
@@ -28,6 +30,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @item = @list.items.new
     @items = @list.items
+
   end
 
   def destroy

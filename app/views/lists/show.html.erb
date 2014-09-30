@@ -1,7 +1,6 @@
 <h3><%= @list.name %></h3>
 
 <h4> List Items </h4>
-
 <div class="container">
   <table class="table-bordered">
     <tr>
@@ -9,20 +8,10 @@
       <th>Date of Auto Remove</th>
       <th>Remove</th>
     </tr>
-    <% @items.each do |item| %>
-    <tr>
-      <td>      
-        <%= "#{item.name}" %>
-      </td>
-      <td>       
-        <%= Date.current + 7.days %>        
-      </td>
-      <td>
-        <%= check_box_tag(:remove) %>
-      </td>
-    </tr>
-    <% end %>
+      <%=render @items %>
   </table>
+  <hr>
+
 </div>
 <hr>
 <hr>

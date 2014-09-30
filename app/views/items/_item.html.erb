@@ -1,0 +1,13 @@
+<%unless item.id.nil?%>
+    <tr>
+      <td>      
+        <%= "#{item.name}" %>
+      </td>
+      <td>       
+        <%= distance_of_time_in_words_to_now(item.created_at + 7.days) %>        
+      </td>
+      <td>
+        <%=link_to "Mark item complete", list_item_path(@list, item), method: :delete, class: "btn"%>
+      </td>
+    </tr>
+<%end%>

@@ -11,6 +11,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    @list = List.find(params[:list_id])
+    @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to :back, notice: "Item marked complete successfully "
+    end
   end
 
   def edit
